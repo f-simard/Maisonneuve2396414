@@ -24,7 +24,7 @@ php artisan db:seed --class=CitySeeder
 
 6. Saisie des etudiants avec le Factory
 ```
-php artisan make:factory StaudentFactory --model=Task
+php artisan make:factory StaudentFactory --model=Student
 php artisan tinker
 \App\Models\Task::factory()->times(100)->create();
 ```
