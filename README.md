@@ -22,9 +22,15 @@ php artisan make:seeder CitySeeder
 php artisan db:seed --class=CitySeeder
 ```
 
-6. Saisie des etudiants avec le Factory
+6. Saisir des etudiants avec le Factory
 ```
 php artisan make:factory StaudentFactory --model=Student
 php artisan tinker
 \App\Models\Task::factory()->times(100)->create();
+```
+
+7. Créer des controlleurs
+```
+php artisan make:controller CityController -m City
+php artisan make:controller StudentController -m Student
 ```
