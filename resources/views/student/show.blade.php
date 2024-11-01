@@ -2,8 +2,11 @@
 @section('title', 'Student List')
 @section('content')
 <div class="mt-5">
-	<h1>{{$student->name}}</h1>
-	<div class="container-md col-12 col-lg-6 mx-auto mt-4">
+	<div class="d-flex align-items-center gap-4">
+		<h1>{{$student->name}}</h1>
+		<a href="{{ route('student.edit', $student->id) }}" class="btn btn-warning btn-sm">Edit</a>
+	</div>
+	<div class="container-md col-12 col-lg-6 mx-auto ms-lg-4 mt-4">
 		<div class="container-md d-flex align-items-center justify-content-between flex-wrap bg-light bg-gradient">
 			<p class="p-1 m-0">ID</p>
 			<p class="p-1 m-0">{{$student->id}}</p>

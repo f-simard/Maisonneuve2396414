@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/student/all', [StudentController::class, 'index'])->name('student.show');
 Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
+Route::get('edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
