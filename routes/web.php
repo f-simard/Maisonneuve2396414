@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/student/all', [StudentController::class, 'index']);
+Route::get('/student/all', [StudentController::class, 'index'])->name('student.show');
+Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
