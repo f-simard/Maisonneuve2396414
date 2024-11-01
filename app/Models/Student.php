@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+
+	protected $fillable = ['name', 'address', 'phone', 'email', 'birthday', 'city'];
+
+	public function city() {
+		return $this->belongsTo(City::class);
+	}
 }
