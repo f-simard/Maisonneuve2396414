@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Student List')
 @section('content')
-<div class="container-md mt-5">
+<div class="container-md">
 	<h1>Student List</h1>
 	@if(count($students) > 0)
 	<table class="table table-striped mt-3">
