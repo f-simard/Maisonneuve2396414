@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class StudentController extends Controller
 {
@@ -26,7 +28,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-		return view('student.create');
+		$cities = City::select()->orderby('name')->get();
+		return view('student.create', ['cities'=>$cities]);
     }
 
     /**
@@ -55,7 +58,7 @@ class StudentController extends Controller
 
 		return redirect()->route('student.show', $student->id)->with(
 			'success',
-			'Student record successfully crated.'
+			'Student record successfully created.'
 		);
 
     }
@@ -79,7 +82,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+		return view('student.edit', ['student' => $student]);
     }
 
     /**

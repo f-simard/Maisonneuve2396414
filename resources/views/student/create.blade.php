@@ -27,8 +27,14 @@
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
 		<label class="p-1 m-0" for="city_id">City*</label>
 		<select name="city_id" class="grow-1 col-md-6 p-1 m-0" id="city_id">
-			<option value="" disabled @if(!old('city_id')) selected @endif>City</option>
-			<option value="15" @if(!old('city_id')===33) selected @endif>Dummy</option>
+			<option value="" disabled @if(!old('city_id')) selected @endif>Select a city</option>
+			@forelse($cities as $city)
+			<option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>
+				{{ $city->name }}
+			</option>
+			@empty
+			<option value="">No cities available</option>
+			@endforelse
 		</select>
 	</div>
 	@if($errors->has("city_id"))
@@ -49,7 +55,7 @@
 		<label class="p-1 m-0" for="email">Email</label>
 		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="email" id="email" value="{{ old('email') }}""></input>
 	</div>
-	@if($errors->has("email"))
+	@if($errors->has(" email"))
 			<div class="text-danger mt-2">
 		{{$errors->first('email')}}
 	</div>
@@ -58,7 +64,7 @@
 		<label class="p-1 m-0" for="birthday">Birthday*</label>
 		<input type="date" class="grow-1 col-md-6 p-1 m-0" name="birthday" id="birthday" value="{{ old('birthday') }}""></input>
 	</div>
-	@if($errors->has("birthday"))
+	@if($errors->has(" birthday"))
 			<div class="text-danger mt-2">
 		{{$errors->first('birthday')}}
 	</div>

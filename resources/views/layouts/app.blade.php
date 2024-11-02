@@ -20,7 +20,7 @@
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Students</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="{{ route('student.index') }}">All</a></li>
-								<li><a class="dropdown-item" href="#">Create</a></li>
+								<li><a class="dropdown-item" href="{{ route('student.create') }}">Create</a></li>
 							</ul>
 						</li>
 					</ul>
