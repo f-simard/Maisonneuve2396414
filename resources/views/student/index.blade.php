@@ -16,8 +16,8 @@
 				<td class="col-2">{{$student->id}}</td>
 				<td class="col-8">{{$student->name}}</td>
 				<td class="col-2">
-					<a href="{{ route('student.show', $student->id) }}"  class="btn btn-primary">View</a>
-					<a href="{{ route('student.edit', $student->id) }}" class="btn btn-outline-primary ms-4">Edit</a>
+					<a href="{{ route('student.show', $student->id) }}"  class="btn btn-warning">View</a>
+					<a href="{{ route('student.edit', $student->id) }}" class="btn btn-outline-warning ms-4">Edit</a>
 				</td>
 			</tr>
 			@endforeach

@@ -1,0 +1,42 @@
+/* ======
+customise pagination
+===== */
+
+.page-item.active .page-link,
+.page-link {
+	color: rgb(33, 37, 41) 
+}
+
+.page-item.active .page-link{
+	background-color: rgb(255, 193, 7);
+	border-color: rgb(255, 193, 7);
+}
+
+.page-item .page-link:hover{
+	color: rgb(33, 37, 41);
+	background-color: rgba(255,193,7, 0.4);
+}
+
+/* ======
+customise navigation
+===== */
+.dropdown-item:hover{
+	color: rgb(33, 37, 41);
+	background-color: rgba(255,193,7, 0.4);
+}
+
+/* =====
+customize buttons
+===== */
+
+.btn-outline-warning{
+	color: rgb(33, 37, 41);
+}
+
+.table .btn-warning {
+	background-color: rgba(255,193,7, 0.4);
+
+	&:hover{
+			background-color: rgba(255,193,7, 1);
+	}
+}
