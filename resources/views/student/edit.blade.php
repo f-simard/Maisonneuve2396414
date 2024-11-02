@@ -56,7 +56,7 @@
 		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="email" id="email" value="{{ old('email', $student->email) }}"></input>
 	</div>
 	@if($errors->has("email"))
-			<div class="text-danger mt-2">
+	<div class="text-danger mt-2">
 		{{$errors->first('email')}}
 	</div>
 	@endif
@@ -65,10 +65,12 @@
 		<input type="date" class="grow-1 col-md-6 p-1 m-0" name="birthday" id="birthday" value="{{ old('birthday', $student->birthday) }}"></input>
 	</div>
 	@if($errors->has("birthday"))
-			<div class="text-danger mt-2">
+	<div class="text-danger mt-2">
 		{{$errors->first('birthday')}}
 	</div>
 	@endif
 	<button class="btn btn-warning mt-3">Save</button>
+	<a href="{{ route('student.show', $student->id) }}" class="btn btn-outline-danger mt-3">Annuler</a>
 </form>
+
 @endsection
