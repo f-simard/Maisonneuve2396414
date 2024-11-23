@@ -18,11 +18,12 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone')->nullable();
-            $table->string('email')->nullable();
             $table->date('birthday');
 			$table->unsignedBigInteger('city_id');
             $table->timestamps();
 			$table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+			$table->unsignedBigInteger('user_id');
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
