@@ -52,21 +52,30 @@
 	</div>
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="email">Email</label>
-		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="email" id="email" value="{{ old('email') }}"></input>
-	</div>
-	@if($errors->has("email"))
-			<div class="text-danger mt-2">
-		{{$errors->first('email')}}
-	</div>
-	@endif
-	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
 		<label class="p-1 m-0" for="birthday">Birthday*</label>
 		<input type="date" class="grow-1 col-md-6 p-1 m-0" name="birthday" id="birthday" value="{{ old('birthday') }}"></input>
 	</div>
 	@if($errors->has("birthday"))
-			<div class="text-danger mt-2">
+	<div class="text-danger mt-2">
 		{{$errors->first('birthday')}}
+	</div>
+	@endif
+	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
+		<label class="p-1 m-0" for="email">Email</label>
+		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="email" id="email" value="{{ old('email') }}"></input>
+	</div>
+	@if($errors->has("email"))
+	<div class="text-danger mt-2">
+		{{$errors->first('email')}}
+	</div>
+	@endif
+	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
+		<label class="p-1 m-0" for="email">Password</label>
+		<input type="password" class="grow-1 col-md-6 p-1 m-0" name="password" id="password"></input>
+	</div>
+	@if($errors->has("password"))
+	<div class="text-danger mt-2">
+		{{$errors->first('password')}}
 	</div>
 	@endif
 	<button class="btn btn-warning mt-3">Save</button>

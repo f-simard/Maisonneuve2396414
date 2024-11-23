@@ -43,7 +43,7 @@
 	</div>
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="phone">Phone Number</label>
+		<label class="p-1 m-0" for="phone">Phone Number (123-123-1234)</label>
 		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="phone" id="phone" value="{{ old('phone', $student->phone) }}" placeholder="123-123-1234"></input>
 	</div>
 	@if($errors->has("phone"))
@@ -53,7 +53,7 @@
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
 		<label class="p-1 m-0" for="email">Email</label>
-		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="email" id="email" value="{{ old('email', $student->email) }}"></input>
+		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="email" id="email" value="{{ old('email', $student->user->email) }}"></input>
 	</div>
 	@if($errors->has("email"))
 	<div class="text-danger mt-2">

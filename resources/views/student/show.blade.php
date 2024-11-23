@@ -28,7 +28,7 @@
 	</div>
 	<div class="container-lg d-sm-flex flex-md-row align-items-center justify-content-between mt-2">
 		<p class="p-1 m-0">Email</p>
-		<p class="p-1 m-0">{{$student->email}}</p>
+		<p class="p-1 m-0">{{$student->user->email}}</p>
 	</div>
 	<div class="container-lg d-sm-flex flex-md-row align-items-center justify-content-between mt-2 bg-light bg-gradient">
 		<p class="p-1 m-0">Birthday</p>
