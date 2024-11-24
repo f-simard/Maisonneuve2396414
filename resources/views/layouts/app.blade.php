@@ -20,10 +20,11 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Students</a>
 							<ul class="dropdown-menu">
-								@auth
-								<li><a class="dropdown-item" href="{{ route('student.index') }}">All</a></li>
-								@endauth
+								@guest
 								<li><a class="dropdown-item" href="{{ route('student.create') }}">Create</a></li>
+								@else
+								<li><a class="dropdown-item" href="{{ route('student.index') }}">All</a></li>
+								@endguest
 							</ul>
 						</li>
 					</ul>

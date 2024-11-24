@@ -70,7 +70,7 @@
 	</div>
 	@endif
 	<button class="btn btn-warning mt-3">Save</button>
-	<a href="{{ route('student.show', $student->id) }}" class="btn btn-outline-danger mt-3">Annuler</a>
+	<a href="{{ route('student.show', $student->id) }}" class="btn btn-outline-danger mt-3">Cancel</a>
 </form>
 
 @endsection

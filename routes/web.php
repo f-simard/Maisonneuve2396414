@@ -19,14 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/student/all', [StudentController::class, 'index'])->name('student.index');
-Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
-Route::get('create/student', [StudentController::class, 'create'])->name('student.create');
-Route::post('create/student', [StudentController::class, 'store'])->name('student.store');
-Route::get('edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
-Route::post('edit/student/{student}', [StudentController::class, 'update'])->name('student.update');
-Route::get('delete/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+Route::middleware('guest')->group(function () {
+	Route::get('create/student', [StudentController::class, 'create'])->name('student.create');
+	Route::post('create/student', [StudentController::class, 'store'])->name('student.store');
+	Route::get('/login', [AuthController::class, 'create'])->name('login');
+	Route::post('/login', [AuthController::class, 'store'])->name('login.store');
 
-Route::get('/login', [AuthController::class, 'create'])->name('login');
-Route::post('/login', [AuthController::class, 'store'])->name('login.store');
-Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
+});
+
+Route::middleware('auth')->group(function () {
+	Route::get('/student/all', [StudentController::class, 'index'])->name('student.index');
+	Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
+	Route::get('edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
+	Route::post('edit/student/{student}', [StudentController::class, 'update'])->name('student.update');
+	Route::get('delete/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+	Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
+});
