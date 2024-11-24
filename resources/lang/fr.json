@@ -8,5 +8,7 @@
 	"Welcome":"Bienvenue",
 	"Home":"Accueil",
 	"Register":"Enregistrement",
-		"Welcome_Paragraph": "Veuillez vous connecter pour profiter de tous les avantages de notre site."
+		"Welcome_Paragraph": "Veuillez vous connecter pour profiter de tous les avantages de notre site.",
+		"Students":"Étudiants",
+		"All":"Tous"
 }
