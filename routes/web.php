@@ -3,6 +3,7 @@
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SetLocaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::get('/lang/{locale}', [SetLocaleController::class, 'index'])->name('lang');
 
 Route::middleware('guest')->group(function () {
 	Route::get('create/student', [StudentController::class, 'create'])->name('student.create');

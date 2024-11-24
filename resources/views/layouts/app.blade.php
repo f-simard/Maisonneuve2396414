@@ -11,6 +11,7 @@
 </head>
 
 <body class="d-flex flex-column vh-100">
+	@php $locale = $locale = session()->get('locale') @endphp
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark py-3 px-5" aria-label="nav">
 			<div class="container-fluid">
@@ -31,10 +32,12 @@
 					<ul class="navbar-nav  mb-2 mb-sm-0">
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-								aria-expanded="false">Langue</a>
+								aria-expanded="false">@lang('Language') {{ $locale == '' ? '' : "($locale)" }}</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">English</a></li>
-								<li><a class="dropdown-item" href="#">French</a></li>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">English</a></li>
+									<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">Français</a></li>
+								</ul>
 							</ul>
 						</li>
 						<li class="nav-item">
