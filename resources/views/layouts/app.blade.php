@@ -20,9 +20,28 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Students</a>
 							<ul class="dropdown-menu">
+								@auth
 								<li><a class="dropdown-item" href="{{ route('student.index') }}">All</a></li>
+								@endauth
 								<li><a class="dropdown-item" href="{{ route('student.create') }}">Create</a></li>
 							</ul>
+						</li>
+					</ul>
+					<ul class="navbar-nav  mb-2 mb-sm-0">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+								aria-expanded="false">Langue</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">English</a></li>
+								<li><a class="dropdown-item" href="#">French</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							@guest
+							<a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
+							@else
+							<a class="nav-link" href="{{ route('logout') }}">@lang('Logout')</a>
+							@endguest
 						</li>
 					</ul>
 				</div>
