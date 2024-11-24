@@ -13,12 +13,14 @@
 		<tbody>
 			@foreach($students as $student)
 			<tr>
-				<td class="col-2">{{$student->id}}</td>
-				<td class="col-8">{{$student->name}}</td>
-				<td class="col-2">
-					<a href="{{ route('student.show', $student->id) }}"  class="btn btn-warning">View</a>
-					<a href="{{ route('student.edit', $student->id) }}" class="btn btn-outline-warning ms-4">Edit</a>
-				</td>
+				<td class="col-md-2">{{$student->id}}</td>
+				<td class="col-md-8">{{$student->name}}</td>
+				<td class="col-ms-2">
+					<div class="btn-group" role="group" aria-label="Basic example">
+						<a href="{{ route('student.show', $student->id) }}" class="btn btn-warning">View</a>
+						<a href="{{ route('student.edit', $student->id) }}" class="btn btn-outline-warning">Edit</a>
+					</div>
+					</td>
 			</tr>
 			@endforeach
 		</tbody>
