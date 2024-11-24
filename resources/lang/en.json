@@ -1,7 +1,12 @@
 {
 	"Login": "Login",
-		"Email": "Email Address",
-		"Password": "Password",
-		"Signed in": "Signed in"
-
+	"Email": "Email Address",
+	"Password": "Password",
+	"Signed in": "Signed in",
+	"French":"French",
+	"English":"English",
+	"Welcome":"Welcome",
+	"Home":"Home",
+	"Register":"Register",
+	"Welcome_Paragraph": "Please log in or create an account to benefit from all content site."
 }

@@ -2,5 +2,11 @@
 	"Login": "Connexion",
 	"Email": "Adresse courriel",
 	"Password": "Mot de passe",
-	"Signed in": "Connecté"
+	"Signed in": "Connecté",
+	"English":"Anglais",
+	"French":"Français",
+	"Welcome":"Bienvenue",
+	"Home":"Accueil",
+	"Register":"Enregistrement",
+		"Welcome_Paragraph": "Veuillez vous connecter pour profiter de tous les avantages de notre site."
 }

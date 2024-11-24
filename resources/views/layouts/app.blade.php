@@ -34,10 +34,8 @@
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
 								aria-expanded="false">@lang('Language') {{ $locale == '' ? '' : "($locale)" }}</a>
 							<ul class="dropdown-menu">
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">English</a></li>
-									<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">Français</a></li>
-								</ul>
+								<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">English</a></li>
+								<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">French</a></li>
 							</ul>
 						</li>
 						<li class="nav-item">
