@@ -32,7 +32,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-	Route::get('/student/all', [StudentController::class, 'index'])->name('student.index');
+	Route::get('/students', [StudentController::class, 'index'])->name('student.index');
 	Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
 	Route::get('edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
 	Route::post('edit/student/{student}', [StudentController::class, 'update'])->name('student.update');
@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
 	Route::get('create/article', [ArticleController::class, 'create'])->name('article.create');
 	Route::post('create/article', [ArticleController::class, 'store'])->name('article.store');
-	Route::get('/article/all', [ArticleController::class, 'index'])->name('article.index');
+	Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
 	Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show');
 	Route::get('edit/article/{article}', [ArticleController::class, 'edit'])->name('article.edit');
 	Route::post('edit/article/{article}', [ArticleController::class, 'update'])->name('article.update');

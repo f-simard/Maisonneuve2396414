@@ -37,14 +37,19 @@
 							</ul>
 						</li>
 					</ul>
-					<ul class="navbar-nav  mb-2 mb-sm-0">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-								aria-expanded="false">@lang('Language') {{ $locale == '' ? '' : "($locale)" }}</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">@lang('English')</a></li>
-								<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">@lang('French')</a></li>
-							</ul>
+					<ul class="navbar-nav mb-2 mb-sm-0">
+						@auth
+						<li class="nav-item">
+							<span class="nav-link"> @lang('Hello') {{Auth::user()->student->name}}</span>
+						</li>
+						@endauth
+						<li class=" nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+									aria-expanded="false">@lang('Language') {{ $locale == '' ? '' : "($locale)" }}</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">@lang('English')</a></li>
+									<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">@lang('French')</a></li>
+								</ul>
 						</li>
 						<li class="nav-item">
 							@guest
@@ -65,6 +70,12 @@
 		@if(session('success'))
 		<div class="mb-3 mt-3 alert alert-success alert-dismissible fade show" role="alert">
 			{{ session('success') }}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		@endif
+		@if(session('error'))
+		<div class="mb-3 mt-3 alert alert-danger alert-dismissible fade show" role="alert">
+			{{ session('error') }}
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 		@endif

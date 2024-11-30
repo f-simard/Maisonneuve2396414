@@ -42,7 +42,19 @@
 	"success_create_article": "Article succesfully created",
 	"success_create_student": "Student succesfully created",
 	"Missing Translation": "The selected article is not translated in your system's language",
-		"Forum": "Forum",
-		"See All": "See All",
-		"Write": "Write"
+	"Forum": "Forum",
+	"See All": "See All",
+	"Write": "Write",
+	"Written by": "Written by",
+	"succesfully deleted": "sucessfully deleted.",
+	"unauthorized": "Unauthorized action",
+	"Student record successfully created.": "Student record successfully created.",
+	"Student record successfully updated.": "Student record successfully updated.",
+	"success_update_article": "Article succesfully updated",
+	"Hello": "Hello",
+	"Author": "Author",
+	"Articles List": "Article List",
+	"No articles to read": "No articles to read",
+	"All Articles": "All articles",
+	"Missing Title Summary": "Translation missing"
 }

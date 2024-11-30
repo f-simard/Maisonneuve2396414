@@ -69,7 +69,7 @@ class StudentController extends Controller
 
 		return redirect()->route('student.show', $student->id)->with(
 			'success',
-			'Student record successfully created.'
+			@trans('Student record successfully created.')
 		);
 
     }
@@ -124,7 +124,7 @@ class StudentController extends Controller
 
 		return redirect()->route('student.show', $student->id)->with(
 			'success',
-			'Student record successfully updated.'
+			@trans('Student record successfully updated.')
 		);
 
     }
@@ -140,6 +140,6 @@ class StudentController extends Controller
 		$student->user->delete();
 		$student->delete();
 
-		return redirect()->route('student.index')->with('success', 'Student ' . $student->id . ' successfully deleted.');
+		return redirect()->route('student.index')->with('success', 'Student ' .trans('succesfully deleted'));
     }
 }

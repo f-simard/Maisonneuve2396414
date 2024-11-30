@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', @trans('Article'))
+@section('title', @trans('Write') . " " . @trans('Article'))
 @section('content')
 <div class="d-flex align-items-center gap-4">
 	<h1>@lang('Write an article')</h1>

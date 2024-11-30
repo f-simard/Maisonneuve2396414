@@ -42,7 +42,19 @@
 	"success_create_article": "L'article a été créé avec succes",
 	"success_create_student": "L'étudiant a été créé avec succes",
 	"Missing Translation": "L'article sélectionné n'est pas traduit dans la langue de votre profil",
-		"Forum": "Forum",
-		"See All": "Voir tous",
-		"Write":"Écrire"
+	"Forum": "Forum",
+	"See All": "Voir tous",
+	"Write": "Écrire",
+	"Written by": "Écrit par",
+	"succesfully deleted": "supprimé avec succès",
+	"unauthorized": "Action non-autorisée",
+	"Student record successfully created.": "Le dossier étudiant a été créé avec succès.",
+	"Student record successfully updated.": "Dossier étudiant mis à jour avec succès.",
+	"success_update_article": "Article mis à jour avec succès",
+	"Hello": "Allo",
+	"Author": "Auteur",
+	"Articles List": "Liste d'articles",
+	"No articles to read": "Aucun article à lire",
+	"All Articles": "Tous les articles",
+		"Missing Title Summary": "Traduction manquante"
 }
