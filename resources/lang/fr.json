@@ -14,6 +14,7 @@
 	"All": "Tous",
 	"Register_student": "Eregistrer un nouvel étudiant",
 	"Complete_name": "Nom complet",
+	"Name": "Nom",
 	"Address": "Adresse",
 	"City": "Ville",
 	"No city available": "Aucune ville disponible",
@@ -31,5 +32,14 @@
 	"Delete": "Supprimer",
 	"Confirm": "Confirmer",
 	"No registered student": "Aucun étudiant enregistré",
-	"Confirm student delete":"Merci de confirmer la suppression du dossier de l'étudiant"
+	"Confirm student delete": "Merci de confirmer la suppression du dossier de l'étudiant",
+	"Confirm article delete": "Merci de confirmer la suppression de l'article",
+	"Article": "Article",
+	"Write an article": "Écrire un article",
+	"Title": "Titre",
+	"Content": "Contenu",
+	"Post": "Publier",
+	"success_create_article": "L'article a été créé avec succes",
+	"success_create_student": "L'étudiant a été créé avec succes",
+	"Missing Translation": "L'article sélectionné n'est pas traduit dans la langue de votre profil"
 }

@@ -129,6 +129,8 @@ return [
 	'uploaded' => 'Le :attribute n\'a pas pu être téléchargé.',
 	'url' => 'Le :attribute doit être une URL valide.',
 	'uuid' => 'Le :attribute doit être un UUID valide.',
+	'any_content_required' => 'L\'article doit etre écrit dans au moins une des langues',
+	'content_required_if' => 'Un contenu est requis si le titre est rempli',
 
     /*
     |--------------------------------------------------------------------------

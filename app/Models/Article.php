@@ -10,7 +10,7 @@ class Article extends Model
 {
     use HasFactory;
 
-	protected $fillable = ['title', 'article', 'user_id'];
+	protected $fillable = ['title', 'content', 'user_id'];
 
 	public function user()
 	{
@@ -18,20 +18,28 @@ class Article extends Model
 	}
 
 
-	protected function title(): Attribute
+	// Accessor for the 'category' attribute
+	public function getTitleAttribute($value)
 	{
-		return Attribute::make(
-			get: fn($value) => json_decode($value, true),
-			set: fn($value) => json_encode($value)
-		);
+		return json_decode($value, true);
 	}
 
-	protected function content(): Attribute
+	// Mutator for the 'category' attribute
+	public function setTitleAttribute($value)
 	{
-		return Attribute::make(
-			get: fn($value) => json_decode($value, true),
-			set: fn($value) => json_encode($value)
-		);
+		$this->attributes['title'] = json_encode($value);
+	}
+
+	// Accessor for the 'category' attribute
+	public function getContentAttribute($value)
+	{
+		return json_decode($value, true);
+	}
+
+	// Mutator for the 'category' attribute
+	public function setContentAttribute($value)
+	{
+		$this->attributes['content'] = json_encode($value);
 	}
 
 }

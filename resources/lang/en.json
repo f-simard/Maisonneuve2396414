@@ -32,5 +32,14 @@
 	"Delete": "Delete",
 	"Confirm": "Confirm",
 	"No registered student": "No student registered",
-	"Confirm student delete": "Please confirm record deletion for student"
+	"Confirm student delete": "Please confirm record deletion for student",
+	"Confirm article delete": "Please confirm article deletion for article",
+	"Article": "Article",
+	"Write an article": "Write an article",
+	"Title": "Title",
+	"Content": "Content",
+	"Post": "Post",
+	"success_create_article": "Article succesfully created",
+	"success_create_student": "Student succesfully created",
+	"Missing Translation": "The selected article is not translated in your system's language"
 }

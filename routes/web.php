@@ -37,6 +37,14 @@ Route::middleware('auth')->group(function () {
 	Route::get('edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
 	Route::post('edit/student/{student}', [StudentController::class, 'update'])->name('student.update');
 	Route::get('delete/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+
 	Route::get('create/article', [ArticleController::class, 'create'])->name('article.create');
+	Route::post('create/article', [ArticleController::class, 'store'])->name('article.store');
+	Route::get('/article/all', [ArticleController::class, 'index'])->name('article.index');
+	Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show');
+	Route::get('edit/article/{article}', [ArticleController::class, 'edit'])->name('article.edit');
+	Route::post('edit/article/{article}', [ArticleController::class, 'update'])->name('article.update');
+	Route::get('delete/article/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
 	Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
 });

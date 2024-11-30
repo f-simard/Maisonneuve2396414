@@ -129,6 +129,8 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
+	'any_content_required' => 'The article must be entered in at least one of the langagues',
+	'content_required_if' => 'Content is required title is entered',
 
     /*
     |--------------------------------------------------------------------------
