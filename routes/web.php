@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SetLocaleController;
@@ -36,5 +37,6 @@ Route::middleware('auth')->group(function () {
 	Route::get('edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
 	Route::post('edit/student/{student}', [StudentController::class, 'update'])->name('student.update');
 	Route::get('delete/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+	Route::get('create/article', [ArticleController::class, 'create'])->name('article.create');
 	Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
