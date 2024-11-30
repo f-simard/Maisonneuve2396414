@@ -28,6 +28,14 @@
 								@endguest
 							</ul>
 						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+								aria-expanded="false">@lang('Forum')</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ route('article.index') }}">@lang('See All')</a></li>
+								<li><a class="dropdown-item" href="{{ route('article.create') }}">@lang('Write')</a></li>
+							</ul>
+						</li>
 					</ul>
 					<ul class="navbar-nav  mb-2 mb-sm-0">
 						<li class="nav-item dropdown">

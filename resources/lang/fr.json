@@ -41,5 +41,8 @@
 	"Post": "Publier",
 	"success_create_article": "L'article a été créé avec succes",
 	"success_create_student": "L'étudiant a été créé avec succes",
-	"Missing Translation": "L'article sélectionné n'est pas traduit dans la langue de votre profil"
+	"Missing Translation": "L'article sélectionné n'est pas traduit dans la langue de votre profil",
+		"Forum": "Forum",
+		"See All": "Voir tous",
+		"Write":"Écrire"
 }
