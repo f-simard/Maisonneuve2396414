@@ -16,7 +16,7 @@ class FileController extends Controller
 	 */
 	public function index()
 	{
-		$files = File::select()->orderby('name')->paginate(10);
+		$files = File::select()->paginate(10);
 
 		return view('file.index', ['files' => $files]);
 	}
@@ -39,26 +39,28 @@ class FileController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$request->validate([
-			'title_en' => 'required_without:title_fr',
-			'title_fr' => 'required_without:title_en',
-			'file' => 'required|mimes:doc,zip,pdf|max:2048'
-		],
+		$request->validate(
 			[
-				'title_en.required_without' => trans('validation.title_required'),
-				'title_fr.required_without' => trans('validation.title_required'),
-			]);
+				'name_en' => 'required_without:title_fr',
+				'name_fr' => 'required_without:title_en',
+				'file' => 'required|mimes:doc,zip,pdf|max:2048'
+			],
+			[
+				'name_en.required_without' => trans('validation.title_required'),
+				'name_fr.required_without' => trans('validation.title_required'),
+			]
+		);
 
 		$path = $request->file('file')->store('files', 'public');
 
 		$file_name = [];
 
-		if ($request->title_en != null) {
-			$file_name = $file_name + ['en' => $request->title_en];
+		if ($request->name_en != null) {
+			$file_name = $file_name + ['en' => $request->name_en];
 		};
 
-		if ($request->title_fr != null) {
-			$file_name = $file_name + ['fr' => $request->title_fr];
+		if ($request->name_fr != null) {
+			$file_name = $file_name + ['fr' => $request->name_fr];
 		};
 
 		$file = File::create(
@@ -73,7 +75,6 @@ class FileController extends Controller
 			'success',
 			trans('success_create_file')
 		);
-
 	}
 
 	/**
@@ -95,7 +96,11 @@ class FileController extends Controller
 	 */
 	public function edit(File $file)
 	{
-		//
+		if ($file->user_id !== Auth::user()->id) {
+			return redirect()->route('file.index')->with('error', trans('unauthorized'));
+		} else {
+			return view('file.edit', ['file' => $file]);
+		}
 	}
 
 	/**
@@ -107,7 +112,42 @@ class FileController extends Controller
 	 */
 	public function update(Request $request, File $file)
 	{
-		//
+		if ($file->user_id !== Auth::user()->id) {
+			return redirect()->route('file.show', $file->id)->with('error', trans('unauthorized'));
+		} else {
+
+			$request->validate(
+				[
+					'name_en' => 'required_without:title_fr',
+					'name_fr' => 'required_without:title_en',
+				],
+				[
+					'name_en.required_without' => trans('validation.title_required'),
+					'name_fr.required_without' => trans('validation.title_required'),
+				]
+			);
+
+			$file_name = [];
+
+			if ($request->name_en != null) {
+				$file_name = $file_name + ['en' => $request->name_en];
+			};
+
+			if ($request->name_fr != null) {
+				$file_name = $file_name + ['fr' => $request->name_fr];
+			};
+
+			$file->update(
+				[
+					'name' => $file_name,
+				]
+			);
+
+			return redirect()->route('file.index')->with(
+				'success',
+				trans('success_update_file')
+			);
+		}
 	}
 
 	/**
@@ -118,6 +158,22 @@ class FileController extends Controller
 	 */
 	public function destroy(File $file)
 	{
-		//
+
+		if ($file->user_id !== Auth::user()->id) {
+
+			return redirect()->route('file.index')->with('error', trans('unauthorized'));
+
+		} else {
+
+			// Check if the file exists and delete it
+			if (Storage::disk('public')->exists($file->path)) {
+				Storage::disk('public')->delete($file->path);
+			}
+
+			// Optionally, delete the file record from the database as well
+			$file->delete();
+
+			return redirect()->route('file.index')->with('success', trans('success_delete_file'));
+		}
 	}
 }

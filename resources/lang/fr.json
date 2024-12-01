@@ -65,5 +65,9 @@
 	"No files uploaded": "Aucun fichier disponible",
 	"Download": "Télécharger",
 	"Files": "Fichiers",
-	"success_create_file":"Fichier téléversé avec succès"
+	"success_create_file": "Fichier téléversé avec succès",
+	"success_update_file": "Fichier mis à jour avec succès",
+	"success_delete_file": "Fichier mis à jour avec succès",
+	"Edit file": "Modifier fichier",
+	"Confirm file delete": "Confirmer la suppression du fichier "
 }

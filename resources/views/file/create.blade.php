@@ -17,12 +17,12 @@
 <form class="container-md col-12 col-lg-8 mx-auto ms-lg-4 mt-4" method="post" enctype="multipart/form-data">
 	@csrf
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="title_en">@lang('English Title')</label>
-		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="title_en" id="title_en" value="{{ old('title_en') }}"></input>
+		<label class="p-1 m-0" for="name_en">@lang('English Title')</label>
+		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="name_en" id="name_en" value="{{ old('name_en') }}"></input>
 	</div>
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="title_fr">@lang('French Title')</label>
-		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="title_fr" id="title_fr" value="{{ old('title_fr') }}"></input>
+		<label class="p-1 m-0" for="name_fr">@lang('French Title')</label>
+		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="name_fr" id="name_fr" value="{{ old('name_fr') }}"></input>
 	</div>
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
 		<label class="p-1 m-0" for="file">@lang('File')</label>
