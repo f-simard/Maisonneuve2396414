@@ -58,5 +58,14 @@
 	"All Articles": "All articles",
 	"Missing Title Summary": "Translation missing",
 	"Edit Article":"Edit Article",
-	"Modify an article":"Modify an article"
+	"Modify an article":"Modify an article",
+	"Upload File": "Upload File",
+	"English Title":"English Title",
+	"French Title":"French Title",
+	"Upload":"Upload",
+	"File List":"File List",
+	"No files uploaded":"No files uploaded",
+	"Download":"Download",
+	"Files":"Files",
+	"success_create_file":"File succesfully uploaded"
 }

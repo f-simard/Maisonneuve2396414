@@ -56,7 +56,14 @@
 	"Articles List": "Liste d'articles",
 	"No articles to read": "Aucun article à lire",
 	"All Articles": "Tous les articles",
-		"Missing Title Summary": "Traduction manquante",
-			"Edit Article": "Modifier article",
-			"Modify an article":"Modifier un article"
+	"Missing Title Summary": "Traduction manquante",
+	"Edit Article": "Modifier article",
+	"Modify an article": "Modifier un article",
+	"Upload File": "Téléverser un fichier",
+	"Upload": "Téléverser",
+	"File List": "Liste des fichiers",
+	"No files uploaded": "Aucun fichier disponible",
+	"Download": "Télécharger",
+	"Files": "Fichiers",
+	"success_create_file":"Fichier téléversé avec succès"
 }

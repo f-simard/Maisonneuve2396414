@@ -131,6 +131,7 @@ return [
 	'uuid' => 'Le :attribute doit être un UUID valide.',
 	'any_content_required' => 'L\'article doit etre écrit dans au moins une des langues',
 	'content_required_if' => 'Un contenu est requis si le titre est rempli',
+	'title_required' => 'Un titre est requis dans au moins une des langues',
 
     /*
     |--------------------------------------------------------------------------

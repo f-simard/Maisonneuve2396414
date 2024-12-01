@@ -36,6 +36,14 @@
 								<li><a class="dropdown-item" href="{{ route('article.create') }}">@lang('Write')</a></li>
 							</ul>
 						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+								aria-expanded="false">@lang('Files')</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ route('file.index') }}">@lang('See All')</a></li>
+								<li><a class="dropdown-item" href="{{ route('file.create') }}">@lang('Upload')</a></li>
+							</ul>
+						</li>
 					</ul>
 					<ul class="navbar-nav mb-2 mb-sm-0">
 						@auth
@@ -44,12 +52,12 @@
 						</li>
 						@endauth
 						<li class=" nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-									aria-expanded="false">@lang('Language') {{ $locale == '' ? '' : "($locale)" }}</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">@lang('English')</a></li>
-									<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">@lang('French')</a></li>
-								</ul>
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+								aria-expanded="false">@lang('Language') {{ $locale == '' ? '' : "($locale)" }}</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">@lang('English')</a></li>
+								<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">@lang('French')</a></li>
+							</ul>
 						</li>
 						<li class="nav-item">
 							@guest

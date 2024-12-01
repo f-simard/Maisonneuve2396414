@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SetLocaleController;
@@ -45,6 +46,14 @@ Route::middleware('auth')->group(function () {
 	Route::get('edit/article/{article}', [ArticleController::class, 'edit'])->name('article.edit');
 	Route::post('edit/article/{article}', [ArticleController::class, 'update'])->name('article.update');
 	Route::get('delete/article/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
+	Route::get('create/file', [FileController::class, 'create'])->name('file.create');
+	Route::post('create/file', [FileController::class, 'store'])->name('file.store');
+	Route::get('/files', [FileController::class, 'index'])->name('file.index');
+	Route::get('/file/{file}', [FileController::class, 'show'])->name('file.show');
+	Route::get('edit/file/{file}', [FileController::class, 'edit'])->name('file.edit');
+	Route::post('edit/file/{file}', [FileController::class, 'update'])->name('file.update');
+	Route::get('delete/file/{file}', [FileController::class, 'destroy'])->name('file.destroy');
 
 	Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
