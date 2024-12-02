@@ -18,6 +18,7 @@ class CreateFilesTable extends Migration
 			$table->unsignedBigInteger('user_id');
 			$table->json('name');
 			$table->string('path');
+			$table->string('lang_badge')->nullable();
             $table->timestamps();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

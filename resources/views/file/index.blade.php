@@ -16,10 +16,12 @@ $locale = app()->getLocale();
 		<tbody>
 			@foreach($files as $file)
 			<tr>
-				@if(!isset($file->name[$locale]))
-				<td class="col-md-8">@lang('Missing Title Summary')</td>
-				@else
-				<td class="col-md-8">{{ $file->name[$locale] }}</a></td>
+				@if(isset($file->name[$locale]))
+				<td class="col-md-8">{{ $file->name[$locale] }}</td>
+				@elseif(isset($file->name['en']))
+				<td class="col-md-8">{{ $file->name['en'] }}<span class="badge text-bg-secondary ms-1">{{ $file->lang_badge }}</span></td>
+				@elseif(isset($file->name['fr']))
+				<td class="col-md-8">{{ $file->name['fr'] }}<span class="badge text-bg-secondary ms-1">{{ $file->lang_badge }}</span></td>
 				@endif
 				<td class="col-md-4">{{ $file->user->student->name }}</td>
 				<td>

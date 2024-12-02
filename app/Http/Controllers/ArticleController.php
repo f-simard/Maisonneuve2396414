@@ -72,10 +72,18 @@ class ArticleController extends Controller
 			$article_content = $article_content + ['fr' => $request->content_fr];
 		};
 
+		$lang_badge = null;
+		if ($request->title_en == null) {
+			$lang_badge = 'French Only';
+		} else if ($request->title_fr == null) {
+			$lang_badge = 'Anglais seulement';
+		}
+
 		$article = Article::create(
 			[
 				'title' => $article_title,
 				'content' => $article_content,
+				'lang_badge' => $lang_badge,
 				'user_id' => Auth::user()->id
 			]
 		);
@@ -108,7 +116,7 @@ class ArticleController extends Controller
 		if ($article->user_id !== Auth::user()->id) {
 			return redirect()->route('article.show', $article->id)->with('error', trans('unauthorized'));
 		} else {
-			return view ('article.edit', ['article'=>$article]);
+			return view('article.edit', ['article' => $article]);
 		}
 	}
 
@@ -125,54 +133,62 @@ class ArticleController extends Controller
 		if ($article->user_id !== Auth::user()->id) {
 			return redirect()->route('article.show', $article->id)->with('error', trans('unauthorized'));
 		} else {
-			
-		$request->validate(
-			[
-				'title_en' => 'required_without:title_fr',
-				'content_en' => 'required_with:title_en',
-				'title_fr' => 'required_without:title_en',
-				'content_fr' => 'required_with:title_fr',
-			],
-			[
-				'title_en.required_without' => trans('validation.any_content_required'),
-				'title_fr.required_without' => trans('validation.any_content_required'),
-				'content_en.required_with' => trans('validation.content_required_if'),
-				'content_fr.required_with' => trans('validation.content_required_if'),
-			]
-		);
 
-		$article_title = [];
+			$request->validate(
+				[
+					'title_en' => 'required_without:title_fr',
+					'content_en' => 'required_with:title_en',
+					'title_fr' => 'required_without:title_en',
+					'content_fr' => 'required_with:title_fr',
+				],
+				[
+					'title_en.required_without' => trans('validation.any_content_required'),
+					'title_fr.required_without' => trans('validation.any_content_required'),
+					'content_en.required_with' => trans('validation.content_required_if'),
+					'content_fr.required_with' => trans('validation.content_required_if'),
+				]
+			);
 
-		if ($request->title_en != null) {
-			$article_title = $article_title + ['en' => $request->title_en];
-		};
+			$article_title = [];
 
-		if ($request->title_fr != null) {
-			$article_title = $article_title + ['fr' => $request->title_fr];
-		};
+			if ($request->title_en != null) {
+				$article_title = $article_title + ['en' => $request->title_en];
+			};
+
+			if ($request->title_fr != null) {
+				$article_title = $article_title + ['fr' => $request->title_fr];
+			};
 
 
-		$article_content = [];
-		if ($request->content_en != null) {
-			$article_content = $article_content + ['en' => $request->content_en];
-		};
-		if ($request->content_fr != null) {
-			$article_content = $article_content + ['fr' => $request->content_fr];
-		};
+			$article_content = [];
+			if ($request->content_en != null) {
+				$article_content = $article_content + ['en' => $request->content_en];
+			};
+			if ($request->content_fr != null) {
+				$article_content = $article_content + ['fr' => $request->content_fr];
+			};
 
-		$article->update(
-			[
-				'title' => $article_title,
-				'content' => $article_content,
-			]
-		);
+			$lang_badge = null;
+			if ($request->title_en == null) {
+				$lang_badge = 'French Only';
+			} else if ($request->title_fr == null) {
+				$lang_badge = 'Anglais seulement';
+			}
 
-		return redirect()->route('article.show', $article->id)->with(
-			'success',
-			trans('success_update_article')
-		);
+			$article->update(
+				[
+					'title' => $article_title,
+					'content' => $article_content,
+					'lang_badge' => $lang_badge
+				]
+			);
+
+			return redirect()->route('article.show', $article->id)->with(
+				'success',
+				trans('success_update_article')
+			);
+		}
 	}
-}
 
 	/**
 	 * Remove the specified resource from storage.
@@ -182,11 +198,10 @@ class ArticleController extends Controller
 	 */
 	public function destroy(Article $article)
 	{
-		if($article->user_id === Auth::user()->id){
+		if ($article->user_id === Auth::user()->id) {
 			$article->delete();
 			return redirect()->route('article.index')->with('success', 'Article ' . trans('succesfully deleted'));
-		}
-		else {
+		} else {
 			return redirect()->route('article.index')->with('error', trans('unauthorized'));
 		}
 	}
