@@ -41,8 +41,8 @@ class FileController extends Controller
 	{
 		$request->validate(
 			[
-				'name_en' => 'required_without:title_fr',
-				'name_fr' => 'required_without:title_en',
+				'name_en' => 'required_without:name_fr',
+				'name_fr' => 'required_without:name_en',
 				'file' => 'required|mimes:doc,zip,pdf|max:2048'
 			],
 			[
@@ -58,15 +58,23 @@ class FileController extends Controller
 		if ($request->name_en != null) {
 			$file_name = $file_name + ['en' => $request->name_en];
 		};
-
 		if ($request->name_fr != null) {
 			$file_name = $file_name + ['fr' => $request->name_fr];
 		};
+
+		$lang_badge = null;
+		if($request->name_en == null){
+			$lang_badge = 'French Only';
+		} else if ($request->name_fr == null){
+			$lang_badge = 'Anglais seulement';
+		}
+
 
 		$file = File::create(
 			[
 				'name' => $file_name,
 				'path' => $path,
+				'lang_badge'=>$lang_badge,
 				'user_id' => Auth::user()->id
 			]
 		);
@@ -118,8 +126,8 @@ class FileController extends Controller
 
 			$request->validate(
 				[
-					'name_en' => 'required_without:title_fr',
-					'name_fr' => 'required_without:title_en',
+					'name_en' => 'required_without:name_fr',
+					'name_fr' => 'required_without:name_en',
 				],
 				[
 					'name_en.required_without' => trans('validation.title_required'),
@@ -137,9 +145,17 @@ class FileController extends Controller
 				$file_name = $file_name + ['fr' => $request->name_fr];
 			};
 
+			$lang_badge = null;
+			if ($request->name_en == null) {
+				$lang_badge = 'French Only';
+			} else if ($request->name_fr == null) {
+				$lang_badge = 'Anglais seulement';
+			}
+
 			$file->update(
 				[
 					'name' => $file_name,
+					'lang_badge' => $lang_badge,
 				]
 			);
 

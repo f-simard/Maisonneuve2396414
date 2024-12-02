@@ -15,10 +15,12 @@ $locale = app()->getLocale();
 		<tbody>
 			@foreach($articles as $article)
 			<tr>
-				@if(!isset($article->title[$locale]))
-				<td class="col-md-8"><a href="{{ route('article.show', $article->id) }}" class="">@lang('Missing Title Summary')</a></td>
-				@else
+				@if(isset($article->title[$locale]))
 				<td class="col-md-8"><a href="{{ route('article.show', $article->id) }}">{{ $article->title[$locale] }}</a></td>
+				@elseif(isset($article->title['en']))
+				<td class="col-md-8"><a href="{{ route('article.show', $article->id) }}">{{ $article->title['en'] }}<span class="badge text-bg-secondary ms-1">{{ $article->lang_badge }}</span></td>
+				@elseif(isset($article->title['fr']))
+				<td class="col-md-8"><a href="{{ route('article.show', $article->id) }}">{{ $article->title['fr'] }}<span class="badge text-bg-secondary ms-1">{{ $article->lang_badge }}</span></td>
 				@endif
 				<td class="col-md-4">{{ $article->user->student->name }}</td>
 			</tr>

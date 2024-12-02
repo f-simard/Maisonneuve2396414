@@ -5,21 +5,14 @@
 $locale = app()->getLocale();
 @endphp
 <div class="d-sm-flex align-items-center gap-4">
-	@if(!isset($article->title[$locale]))
-	<div class="container-md col-12 col-lg-6 mx-auto ms-lg-4 mt-4">
-		<p>@lang('Missing Translation')</p>
-		@if($article->user_id === Auth::user()->id)
-		<div class="btn-group" role="group" aria-label="Basic example">
-			<a href="{{ route('article.edit', $article->id) }}" class="btn btn-outline-warning btn-sm">@lang('Edit')</a>
-			<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteArticle">
-				@lang('Delete')
-			</button>
-		</div>
-		@endif
-	</div>
+	@if(isset($article->title[$locale]))
+	<h1>{{ $article->title[$locale] }}</h1>
+	@elseif(isset($article->title['en']))
+	<h1>{{ $article->title['en'] }}</h1><span class="badge text-bg-secondary ms-1">{{ $article->lang_badge }}</span>
+	@elseif(isset($article->title['fr']))
+	<h1>{{ $article->title['fr'] }}</h1><span class="badge text-bg-secondary ms-1">{{ $article->lang_badge }}</span>
+	@endif
 </div>
-@else
-<h1>{{ $article->title[$locale] }}</h1>
 @if($article->user_id === Auth::user()->id)
 <div class="btn-group" role="group" aria-label="Basic example">
 	<a href="{{ route('article.edit', $article->id) }}" class="btn btn-outline-warning btn-sm">@lang('Edit')</a>
@@ -28,11 +21,17 @@ $locale = app()->getLocale();
 	</button>
 </div>
 @endif
-</div>
+
 <div class="container-md col-12 col-lg-6 mx-auto ms-lg-4 mt-4">
 	<div class="container-lg mt-2">
 		<p class="text-body-secondary">@lang('Written by') {{ $article->user->student->name }}</p>
+		@if(isset($article->content[$locale]))
 		<p>{{ $article->content[$locale] }}</p>
+		@elseif(isset($article->content['en']))
+		<p>{{ $article->content['en'] }}</p>
+		@elseif(isset($article->content['fr']))
+		<p>{{ $article->content['fr'] }}</p>
+		@endif
 	</div>
 	<!-- Button trigger modal -->
 </div>
@@ -56,5 +55,4 @@ $locale = app()->getLocale();
 		</div>
 	</div>
 </div>
-@endif
 @endsection
