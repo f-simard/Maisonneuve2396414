@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title', 'Create student')
+@section('title', @trans('Register'))
 @section('content')
 <div class="d-flex align-items-center gap-4">
-	<h1>Create student</h1>
+	<h1>@lang('Register_student')</h1>
 </div>
 <form class="container-md col-12 col-lg-8 mx-auto ms-lg-4 mt-4" method="post">
 	@csrf
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="name">Name*</label>
+		<label class="p-1 m-0" for="name">@lang('Complete_name')*</label>
 		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="name" id="name" value="{{ old('name') }}"></input>
 	</div>
 	@if($errors->has("name"))
@@ -16,7 +16,7 @@
 	</div>
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="address">Address*</label>
+		<label class="p-1 m-0" for="address">@lang('Address')*</label>
 		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="address" id="address" value="{{ old('address') }}"></input>
 	</div>
 	@if($errors->has("address"))
@@ -25,9 +25,9 @@
 	</div>
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="city_id">City*</label>
+		<label class="p-1 m-0" for="city_id">@lang('City')*</label>
 		<select name="city_id" class="grow-1 col-md-6 p-1 m-0" id="city_id">
-			<option value="" disabled @if(!old('city_id')) selected @endif>Select a city</option>
+			<option value="" disabled @if(!old('city_id')) selected @endif>@lang('Select a city')</option>
 			@forelse($cities as $city)
 			<option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>
 				{{ $city->name }}
@@ -43,7 +43,7 @@
 	</div>
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="phone">Phone Number</label>
+		<label class="p-1 m-0" for="phone">@lang('Phone') (123-123-1234)</label>
 		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="phone" id="phone" value="{{ old('phone') }}" placeholder="123-123-1234"></input>
 	</div>
 	@if($errors->has("phone"))
@@ -52,23 +52,32 @@
 	</div>
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="email">Email</label>
+		<label class="p-1 m-0" for="birthday">@lang('Birthdate')*</label>
+		<input type="date" class="grow-1 col-md-6 p-1 m-0" name="birthday" id="birthday" value="{{ old('birthday') }}"></input>
+	</div>
+	@if($errors->has("birthday"))
+	<div class="text-danger mt-2">
+		{{$errors->first('birthday')}}
+	</div>
+	@endif
+	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
+		<label class="p-1 m-0" for="email">@lang('Email')</label>
 		<input type="text" class="grow-1 col-md-6 p-1 m-0" name="email" id="email" value="{{ old('email') }}"></input>
 	</div>
 	@if($errors->has("email"))
-			<div class="text-danger mt-2">
+	<div class="text-danger mt-2">
 		{{$errors->first('email')}}
 	</div>
 	@endif
 	<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-md-4 mt-3">
-		<label class="p-1 m-0" for="birthday">Birthday*</label>
-		<input type="date" class="grow-1 col-md-6 p-1 m-0" name="birthday" id="birthday" value="{{ old('birthday') }}"></input>
+		<label class="p-1 m-0" for="email">@lang('Password')</label>
+		<input type="password" class="grow-1 col-md-6 p-1 m-0" name="password" id="password"></input>
 	</div>
-	@if($errors->has("birthday"))
-			<div class="text-danger mt-2">
-		{{$errors->first('birthday')}}
+	@if($errors->has("password"))
+	<div class="text-danger mt-2">
+		{{$errors->first('password')}}
 	</div>
 	@endif
-	<button class="btn btn-warning mt-3">Save</button>
+	<button class="btn btn-warning mt-3">@lang('Register')</button>
 </form>
 @endsection

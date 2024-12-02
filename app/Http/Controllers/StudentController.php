@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
@@ -48,7 +51,8 @@ class StudentController extends Controller
 			'address' =>'required|string|max:191',
 			'city_id'=> 'required|exists:App\Models\City,id',
 			'phone'=> 'nullable|regex:/^\d{3}-\d{3}-\d{4}$/i',
-			'email'=>'nullable|email|unique:students',
+			'email'=> 'required|email|unique:App\Models\User,email',
+			'password'=> 'required|min:6|max:20',
 			'birthday'=>'required|before:' . $dateMin,
 		]);
 
@@ -56,10 +60,17 @@ class StudentController extends Controller
 		$student->fill($request->all());
 		$student->save();
 
+		$user = new User;
+		$user->fill($request->all());
+		$user->password = Hash::make($request->password);
+		$user->save();
+
+		$student->user_id = $user->id;
+		$student->save();
 
 		return redirect()->route('student.show', $student->id)->with(
 			'success',
-			'Student record successfully created.'
+			@trans('Student record successfully created.')
 		);
 
     }
@@ -103,15 +114,18 @@ class StudentController extends Controller
 			'city_id' => 'required|exists:App\Models\City,id',
 			'phone' => 'nullable|regex:/^\d{3}-\d{3}-\d{4}$/i',
 			'birthday' => 'required|before:' . $dateMin,
-			'email'=> ['nullable', 'email', Rule::unique('students')->ignore($student->id)]
+			'email'=> ['email', Rule::unique('users')->ignore($student->user_id)]
 		]);
 
 		$student->fill($request->all());
 		$student->save();
 
+		$student->user->email = $request->email;
+		$student->user->save();
+
 		return redirect()->route('student.show', $student->id)->with(
 			'success',
-			'Student record successfully updated.'
+			@trans('Student record successfully updated.')
 		);
 
     }
@@ -124,8 +138,18 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-		$student->delete();
+		if(Auth::user()->id !== $student->user_id){
 
-		return redirect()->route('student.index')->with('success', 'Student ' . $student->id . ' successfully deleted.');
+			$student->user->delete();
+			$student->delete();
+
+			return redirect()->route('student.index')->with('success', 'Student ' . trans('succesfully deleted'));
+
+		} else {
+
+			return redirect()->route('student.show', $student->id)->with('error', trans('unauthorized'));
+			
+		}
+
     }
 }

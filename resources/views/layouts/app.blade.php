@@ -11,6 +11,7 @@
 </head>
 
 <body class="d-flex flex-column vh-100">
+	@php $locale = $locale = session()->get('locale') @endphp
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark py-3 px-5" aria-label="nav">
 			<div class="container-fluid">
@@ -18,11 +19,54 @@
 				<div class="collapse navbar-collapse" id="navbarsExample04">
 					<ul class="navbar-nav me-auto mb-2 mb-md-0">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Students</a>
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">@lang('Students')</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="{{ route('student.index') }}">All</a></li>
-								<li><a class="dropdown-item" href="{{ route('student.create') }}">Create</a></li>
+								@guest
+								<li><a class="dropdown-item" href="{{ route('student.create') }}">@lang('Register')</a></li>
+								@else
+								<li><a class="dropdown-item" href="{{ route('student.index') }}">@lang('All')</a></li>
+								@endguest
 							</ul>
+						</li>
+						@auth
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+								aria-expanded="false">@lang('Forum')</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ route('article.index') }}">@lang('See All')</a></li>
+								<li><a class="dropdown-item" href="{{ route('article.create') }}">@lang('Write')</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+								aria-expanded="false">@lang('Files')</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ route('file.index') }}">@lang('See All')</a></li>
+								<li><a class="dropdown-item" href="{{ route('file.create') }}">@lang('Upload')</a></li>
+							</ul>
+						</li>
+						@endauth
+					</ul>
+					<ul class="navbar-nav mb-2 mb-sm-0">
+						@auth
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('student.show', Auth::user()->student->id ) }}"> @lang('Hello') {{Auth::user()->student->name}}</a>
+						</li>
+						@endauth
+						<li class=" nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+								aria-expanded="false">@lang('Language') {{ $locale == '' ? '' : "($locale)" }}</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ route('lang', 'en') }}">@lang('English')</a></li>
+								<li><a class="dropdown-item" href="{{ route('lang', 'fr') }}">@lang('French')</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							@guest
+							<a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
+							@else
+							<a class="nav-link" href="{{ route('logout') }}">@lang('Logout')</a>
+							@endguest
 						</li>
 					</ul>
 				</div>
@@ -39,11 +83,17 @@
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 		@endif
+		@if(session('error'))
+		<div class="mb-3 mt-3 alert alert-danger alert-dismissible fade show" role="alert">
+			{{ session('error') }}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		@endif
 		@yield('content')
 	</div>
 	<footer class="py-3 my-4">
 		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-			<li class="nav-item"><a href="{{ route('student.index') }}" class="nav-link px-2 text-body-secondary">Students</a></li>
+			<li class="nav-item"><a href="{{ route('student.index') }}" class="nav-link px-2 text-body-secondary">@lang('Students')</a></li>
 		</ul>
 		<p class="text-center text-body-secondary">© 2024 Maisonneuve2396414, Inc</p>
 	</footer>
