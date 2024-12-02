@@ -35,9 +35,11 @@
 		<p class="p-1 m-0">{{$student->birthday}}</p>
 	</div>
 	<!-- Button trigger modal -->
+	@if (Auth::user()->id !== $student->user_id)
 	<button type="button" class="btn btn-outline-danger mt-4" data-bs-toggle="modal" data-bs-target="#deleteStudent">
 		@lang('Delete')
 	</button>
+	@endif
 </div>
 
 

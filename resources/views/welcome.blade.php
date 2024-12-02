@@ -4,8 +4,9 @@
 <div class="row justify-content-center mt-5 mb-5">
 	<section class="col-md-8">
 		<h1>
-			@lang('Welcome')
+			@lang('Welcome') @auth {{Auth::user()->student->name}} @endauth
 		</h1>
+		@guest
 		<p class="mt-3">
 			@lang('Welcome_Paragraph')
 		</p>
@@ -13,6 +14,7 @@
 			<a href="{{ route('login') }}" class="btn btn-warning">@lang('Login')</a>
 			<a href="{{ route('student.create') }}" class="btn btn-outline-warning">@lang('Register')</a>
 		</div>
+		@endguest
 	</section>
 </div>
 @endsection

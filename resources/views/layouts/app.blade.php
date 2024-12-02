@@ -28,6 +28,7 @@
 								@endguest
 							</ul>
 						</li>
+						@auth
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
 								aria-expanded="false">@lang('Forum')</a>
@@ -44,11 +45,12 @@
 								<li><a class="dropdown-item" href="{{ route('file.create') }}">@lang('Upload')</a></li>
 							</ul>
 						</li>
+						@endauth
 					</ul>
 					<ul class="navbar-nav mb-2 mb-sm-0">
 						@auth
 						<li class="nav-item">
-							<span class="nav-link"> @lang('Hello') {{Auth::user()->student->name}}</span>
+							<a class="nav-link" href="{{ route('student.show', Auth::user()->student->id ) }}"> @lang('Hello') {{Auth::user()->student->name}}</a>
 						</li>
 						@endauth
 						<li class=" nav-item dropdown">

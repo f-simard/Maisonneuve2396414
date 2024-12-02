@@ -8,6 +8,7 @@ use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
@@ -137,9 +138,18 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-		$student->user->delete();
-		$student->delete();
+		if(Auth::user()->id !== $student->user_id){
 
-		return redirect()->route('student.index')->with('success', 'Student ' .trans('succesfully deleted'));
+			$student->user->delete();
+			$student->delete();
+
+			return redirect()->route('student.index')->with('success', 'Student ' . trans('succesfully deleted'));
+
+		} else {
+
+			return redirect()->route('student.show', $student->id)->with('error', trans('unauthorized'));
+			
+		}
+
     }
 }
