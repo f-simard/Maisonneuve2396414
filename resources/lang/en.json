@@ -67,6 +67,7 @@
 	"No files uploaded":"No files uploaded",
 	"Download":"Download",
 	"Files":"Files",
+	"File":"File",
 	"success_create_file":"File succesfully uploaded",
 	"success_update_file":"File succesfully updated",
 		"success_delete_file": "File succesfully deleted",

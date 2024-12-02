@@ -55,7 +55,7 @@
 				@lang('Confirm student delete') {{$student->name}} ({{$student->id}})
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Cancel')</button>
 				<a href="{{(route('student.destroy', $student->id))}}" type="button" class="btn btn-danger">@lang('Delete')</a>
 			</div>
 		</div>
